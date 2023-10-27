@@ -20,5 +20,3 @@ Este proyecto fue realizado por:
 - Uriel Ulises Acosta Olvera
 - Johan Ronaldo Martínez Ramírez
 - Johan José María Rentería Zaragoza
-
-Para cualquier duda o sugerencia, pueden contactarnos al correo electrónico proyecto.web@gmail.com. Esperamos que les guste nuestro trabajo. ¡Gracias por visitar nuestro sitio web! 😊
