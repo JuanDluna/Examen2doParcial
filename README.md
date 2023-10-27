@@ -1,5 +1,3 @@
-Un posible "Read Me" sobre el sitio web podría ser el siguiente:
-
 # Proyecto de Programación de Sistemas Web
 
 Este es un proyecto escolar con finalidad de examen parcial para la materia de Programación de Sistemas Web. El objetivo es crear un sitio web que cumpla con los siguientes requerimientos:
