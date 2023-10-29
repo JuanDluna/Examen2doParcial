@@ -32,19 +32,19 @@
             <a href="index.php" class="btn">Inicio</a>
             <a href="#" class="btn">Servicios</a>
             <a href="index.php#contacto" class="btn">Contacto</a>
+            <?php if (isset($_SESSION['user_id'])) { ?>
             <a href="vacanteForm.php" class="btn">Trabaja con nosotros</a>
+            <?php }?>
             <div class="dropdown">
-                <button class="btn btn-secondary" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     <i class='bx bxs-user-circle'></i>
                 </button>
                 <div class="dropdown-menu">
-
                     <?php if (isset($_SESSION['user_id'])) { ?>
                         <a class="dropdown-item" href="#">Mi cuenta</a></li>
                         <a class="dropdown-item" href="#">Cerrar sesión</a></li>
                     <?php } else { ?>
-
                         <form class="px-4 py-3">
                             <div class="form-group">
                                 <label for="exampleDropdownFormEmail1">Correo Electrónico: </label>
@@ -59,7 +59,7 @@
                             <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                         </form>
                         <div class="dropdown-divider"></div>
-                        <a  href="#" data-toggle="modal" data-target="#registerModal">¿Nuevo? ¡Registrate!</a>
+                        <a href="#" data-toggle="modal" data-target="#registerModal">¿Nuevo? ¡Registrate!</a>
 
                     <?php } ?>
 
