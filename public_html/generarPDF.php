@@ -68,62 +68,85 @@ $html = "
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <style>
-    body {
-        display:flex;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f0f0f0;
+        .container {
+            width: 80%;
+            margin: auto;
+            font-family: Arial, sans-serif;
+        }
 
-    }
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        background-color: #fff;
-        column-count:3;
-    }
-    h1, h2 {
-        color: #4682b4;
-        text-align: center;
-    }
-    p {
-        color: #000000;
-        margin-left: 20px;
-    }
-    img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 25%; /* No pasa de 1/4 del ancho */
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        .codigo {
+            background-color: #f9f9f9;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
 </style>
-
 </head>
 
 <body>
     <div class='container'>
-    <h1>Registro Completado</h1>
-        <img src=$logo64 alt='Logo de Softix'>
-        <p>Fecha: $fecha_actual</p>
-        <img src=$foto64 alt='Foto del candidato'>
-        <p> Estimado <strong>$nombre $apellido_paterno $apellido_materno</strong>, te damos la bienvenida a Softix. A continuación se muestran los datos que nos proporcionaste:</p>
-        <p><strong>Teléfono:</strong>  $telefono </p>
-        <p><strong>Fecha de Nacimiento:</strong> $dia/$mes/$anio </p>
-        <p><strong>Lenguajes de Programación:</strong> $lenguajes_programacion</p>
-        <p><strong>Disponibilidad para Viajar:</strong> $disponibilidad_viajar</p>
-        <p><strong>Disponibilidad de Residencia:</strong> $disponibilidad_residencia</p>
-        <p><strong>Inglés:</strong> $ingles</p>
-        <p><strong>Puesto al que Aplica:</strong> $puesto</p>
-        <h2>Felicidades!</h2>
-        <p>Tu registro ha sido completado con éxito. Ahora puedes aplicar para el examen de conocimientos con tu código de
-            acceso único: <strong> $codigoExamen </strong> </p>
-
-        <center>
-        <img src=$firma64 alt='Firma del CEO'>
-        <p><strong>CEO. Ing. Juan De Luna</strong></p>
-        </center>
+        <table>
+            <tr>
+                <td><img src=$logo64 alt='Logo de Softix'></td>
+                <td><h1>Registro Completado</h1> </td>
+                <td>$fecha_actual</td>
+            </tr>
+            <tr>
+                <td colspan='3' Estimado <strong>$nombre $apellido_paterno $apellido_materno</strong>, te damos la bienvenida a Softix. A continuación se muestran los datos que nos proporcionaste:</td>
+            </tr>
+            <tr>
+                <td><img src=$foto64 alt='Foto del candidato'></td>
+                <td>
+                <strong>Teléfono:</strong>  $telefono <br>
+                <strong>Fecha de Nacimiento:</strong> $dia/$mes/$anio <br>
+                <strong>Lenguajes de Programación:</strong> $lenguajes_programacion<br>
+                <strong>Disponibilidad para Viajar:</strong> $disponibilidad_viajar
+                    
+                </td>
+                <td>
+                <strong>Disponibilidad de Residencia:</strong> $disponibilidad_residencia  <br>
+                <strong>Inglés:</strong> $ingles <br>
+                <strong>Puesto al que Aplica:</strong> $puesto
+                <td> 
+            </tr>
+            <tr>
+                <td colspan='3'>
+                    <h2><center>Felicidades!</center></h2>
+                Tu registro ha sido completado con éxito. Ahora puedes aplicar para el examen de conocimientos con tu código de acceso único:
+                </td>
+            </tr>
+            <tr>
+                <td colspan='3' class='codigo'<h3><center> $codigoExamen </center></h3></td>
+            </tr>
+            <tr>
+                <td colspan='3'>
+                    <center>
+                        <img src=$firma64 alt='Firma del CEO' width=50%>
+                        <hr>
+                        <strong>CEO. Ing. Juan De Luna</strong>
+                    </center>
+                </td>
+            </tr>
+        </table>
     </div>
 </body>
 

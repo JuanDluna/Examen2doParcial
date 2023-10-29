@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Softix</title>
-    
+
     <!-- link javascript -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <!-- link css -->
@@ -18,9 +18,21 @@
 
 <body>
 
-    <?php
-        include_once 'header.html';
-    ?>
+
+    <!-- header -->
+    <header class="header">
+        <a href="index.php" class="logo">SOFTIX</a>
+        <nav class="navbar">
+            <a href="index.php" class="active">Inicio</a>
+            <a href="#">Servicios</a>
+            <a href="index.php#contacto">Contacto</a>
+            <a href="vacanteForm.php">Registrate</a>
+        </nav>
+
+        <div class="bx bx-moon" id="darkMode-icon"></div>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
 
     <!--inicio home-->
     <section class="home" id="home">
@@ -28,34 +40,34 @@
             <h3>Hola! Nosotros somos</h3>
             <h1>SOFTIX</h1>
             <p>Conoce todas las maravillas que tenemos para ti</p>
-    
+
             <div class="social-media">
-                <a href=""><i class='bx bxl-facebook' ></i></a>
-                <a href=""><i class='bx bxl-twitter' ></i></a>
-                <a href=""><i class='bx bxl-instagram-alt' ></i></a>
-                <a href=""><i class='bx bxl-whatsapp' ></i></a>
+                <a href=""><i class='bx bxl-facebook'></i></a>
+                <a href=""><i class='bx bxl-twitter'></i></a>
+                <a href=""><i class='bx bxl-instagram-alt'></i></a>
+                <a href=""><i class='bx bxl-whatsapp'></i></a>
             </div>
             <a href="#" class="btn">Iniciar Ingreso</a>
-        </div> 
+        </div>
 
         <div class="profession-container">
             <div class="profession-box">
 
                 <div class="profession" style="--i:0;">
-                <i class='bx bx-code-alt' ></i>
-                <h3>CAPACITATE!!</h3>
+                    <i class='bx bx-code-alt'></i>
+                    <h3>CAPACITATE!!</h3>
                 </div>
                 <div class="profession" style="--i:1;">
-                <i class='bx bxs-data' ></i>
-                <h3>ADMINISTRA</h3>
+                    <i class='bx bxs-data'></i>
+                    <h3>ADMINISTRA</h3>
                 </div>
                 <div class="profession" style="--i:2;">
-                <i class='bx bxl-c-plus-plus' ></i>
-                <h3>DESARROLLA</h3>
+                    <i class='bx bxl-c-plus-plus'></i>
+                    <h3>DESARROLLA</h3>
                 </div>
                 <div class="profession" style="--i:3;">
-                <i class='bx bxs-file-html'></i>
-                <h3>DISEÑA</h3>
+                    <i class='bx bxs-file-html'></i>
+                    <h3>DISEÑA</h3>
                 </div>
 
                 <div class="circle"></div>
@@ -78,8 +90,8 @@
         <div class="about-content">
             <h2 class="heading">Acerca de <span>Nosotros</span></h2>
             <h3>Inovacion tecnologica a tu alcance</h3>
-            <p>En el mundo en constante evolución de la tecnología, Softix se destaca como un líder incuestionable. 
-                Fundada con una visión audaz en mente y una pasión por la innovación,Softix ha crecido para convertirse 
+            <p>En el mundo en constante evolución de la tecnología, Softix se destaca como un líder incuestionable.
+                Fundada con una visión audaz en mente y una pasión por la innovación,Softix ha crecido para convertirse
                 en una empresa de renombre en la industria tecnológica.</p>
             <a href="#" class="btn">Leer mas</a>
         </div>
@@ -91,30 +103,33 @@
 
         <div class="services-container">
             <div class="services-box">
-                <i class='bx bx-code-block' ></i>
+                <i class='bx bx-code-block'></i>
                 <h3>Desarrollador de software</h3>
-                <p>Soluciones personalizadas para satisfacer las necesidades comerciales específicas. Desarrollo de aplicaciones 
+                <p>Soluciones personalizadas para satisfacer las necesidades comerciales específicas. Desarrollo de
+                    aplicaciones
                     de escritorio, web y móviles.</p>
                 <a href="#" class="btn">Leer mas</a>
             </div>
             <div class="services-box">
-                <i class='bx bxs-user-circle' ></i>
+                <i class='bx bxs-user-circle'></i>
                 <h3>Diseñador de experiencia de usuario</h3>
-                <p>Creación de interfaces atractivas y funcionales que mejoran la satisfacción y 
+                <p>Creación de interfaces atractivas y funcionales que mejoran la satisfacción y
                     la usabilidad del usuario.</p>
                 <a href="#" class="btn">Leer mas</a>
             </div>
             <div class="services-box">
-                <i class='bx bx-devices' ></i>                
+                <i class='bx bx-devices'></i>
                 <h3>Desarrollador de aplicaciones moviles</h3>
-                <p>Desarrollo de aplicaciones móviles nativas y multiplataforma para iOS y Android, desde la concepción hasta 
+                <p>Desarrollo de aplicaciones móviles nativas y multiplataforma para iOS y Android, desde la concepción
+                    hasta
                     el lanzamiento.</p>
                 <a href="#" class="btn">Leer mas</a>
             </div>
             <div class="services-box">
-                <i class='bx bxs-help-circle' ></i>
+                <i class='bx bxs-help-circle'></i>
                 <h3>Consultoria en tecnologia</h3>
-                <p>Asesoramiento experto para optimizar infraestructuras y estrategias tecnológicas, mejorando la eficiencia 
+                <p>Asesoramiento experto para optimizar infraestructuras y estrategias tecnológicas, mejorando la
+                    eficiencia
                     empresarial.</p>
                 <a href="#" class="btn">Leer mas</a>
             </div>
