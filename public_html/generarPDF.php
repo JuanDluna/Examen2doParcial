@@ -24,7 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $puesto = $_POST['puesto'];
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file"]) && !(empty($_FILES["file"]["tmp_name"]))) {
-        mkdir("tmp");
+        if (!file_exists("tmp")){
+            mkdir("tmp");
+        }
         $targetDir = "tmp/"; // Directorio donde se guardarán las imágenes
         $targetFile = $targetDir . basename($_FILES["file"]["name"]);
         $typeofFoto = $_FILES["file"]["type"];
@@ -85,6 +87,7 @@ $html = "
         }
 
         h1, h2, h3 {
+            text-align: center;
             color: #333;
         }
 
@@ -106,8 +109,12 @@ $html = "
     <div class='container'>
         <table>
             <tr>
-                <td><img src=$logo64 alt='Logo de Softix'></td>
-                <td><h1>Registro Completado</h1> </td>
+                <td><img src=$logo64 alt='Logo de Softix'</td>
+                <td>
+                    <h1>Registro Completado</h1> 
+                    <h3>'El software inteligente para gente inteligente'</h3>
+
+                </td>
                 <td>$fecha_actual</td>
             </tr>
             <tr>
@@ -130,7 +137,7 @@ $html = "
             </tr>
             <tr>
                 <td colspan='3'>
-                    <h2><center>Felicidades!</center></h2>
+                    <h2><center>¡Un paso menos!</center></h2>
                 Tu registro ha sido completado con éxito. Ahora puedes aplicar para el examen de conocimientos con tu código de acceso único:
                 </td>
             </tr>
@@ -169,11 +176,10 @@ $html = "
     unlink($targetFile);
     rmdir("tmp");
 
+    // header("Location: verificadorExamen.php");
 
     // Output the generated PDF to the browser
     $dompdf->stream();
-
-
 
 } else {
     header("Location: index.php");

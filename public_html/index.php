@@ -6,14 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Softix</title>
+    <link rel="shortcut icon" href="img\Logo.png" type="image/x-icon">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- link javascript -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <!-- link css -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- icono -->
+    <!-- iconos -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
 </head>
 
 <body>
@@ -23,16 +29,84 @@
     <header class="header">
         <a href="index.php" class="logo">SOFTIX</a>
         <nav class="navbar">
-            <a href="index.php" class="active">Inicio</a>
-            <a href="#">Servicios</a>
-            <a href="index.php#contacto">Contacto</a>
-            <a href="vacanteForm.php">Trabaja con nosotros</a>
-        </nav>
+            <a href="index.php" class="btn">Inicio</a>
+            <a href="#" class="btn">Servicios</a>
+            <a href="index.php#contacto" class="btn">Contacto</a>
+            <a href="vacanteForm.php" class="btn">Trabaja con nosotros</a>
+            <div class="dropdown">
+                <button class="btn btn-secondary" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class='bx bxs-user-circle'></i>
+                </button>
+                <div class="dropdown-menu">
 
+                    <?php if (isset($_SESSION['user_id'])) { ?>
+                        <a class="dropdown-item" href="#">Mi cuenta</a></li>
+                        <a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                    <?php } else { ?>
+
+                        <form class="px-4 py-3">
+                            <div class="form-group">
+                                <label for="exampleDropdownFormEmail1">Correo Electrónico: </label>
+                                <input type="email" class="form-control" id="exampleDropdownFormEmail1"
+                                    placeholder="email@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleDropdownFormPassword1">Contraseña: </label>
+                                <input type="password" class="form-control" id="exampleDropdownFormPassword1"
+                                    placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                        </form>
+                        <div class="dropdown-divider"></div>
+                        <a  href="#" data-toggle="modal" data-target="#registerModal">¿Nuevo? ¡Registrate!</a>
+
+                    <?php } ?>
+
+                </div>
+            </div>
+        </nav>
         <div class="bx bx-moon" id="darkMode-icon"></div>
 
         <div class="bx bx-menu" id="menu-icon"></div>
     </header>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Registrarse</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="registerName">Nombre</label>
+                            <input type="text" class="form-control" id="registerName" placeholder="Ingrese su nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">Correo electrónico</label>
+                            <input type="email" class="form-control" id="registerEmail"
+                                placeholder="Ingrese su correo electrónico">
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Contraseña</label>
+                            <input type="password" class="form-control" id="registerPassword"
+                                placeholder="Ingrese su contraseña">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Registrarse</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!--inicio home-->
     <section class="home" id="home">
@@ -47,7 +121,7 @@
                 <a href=""><i class='bx bxl-instagram-alt'></i></a>
                 <a href=""><i class='bx bxl-whatsapp'></i></a>
             </div>
-            <a href="#" class="btn">Iniciar Ingreso</a>
+
         </div>
 
         <div class="profession-container">
