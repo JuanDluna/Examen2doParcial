@@ -209,7 +209,7 @@
                         <p>Estudiante de la Universidad Autonoma de Aguascalientes</p>
                     </div>
                     <div class="testimonial-slide swiper-slide">
-                        <img src="img/testimonial1.jpg" alt="">
+                        <img src="img/testimonial4.jpg" alt="">
                         <h3>Johan Jose Maria renteria Zaragoza</h3>
                         <p>Estudiante de la Universidad Autonoma de Aguascalientes</p>
                     </div>
