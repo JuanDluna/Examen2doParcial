@@ -26,7 +26,7 @@
             <a href="index.php" class="active">Inicio</a>
             <a href="#">Servicios</a>
             <a href="index.php#contacto">Contacto</a>
-            <a href="vacanteForm.php">Registrate</a>
+            <a href="vacanteForm.php">Trabaja con nosotros</a>
         </nav>
 
         <div class="bx bx-moon" id="darkMode-icon"></div>
