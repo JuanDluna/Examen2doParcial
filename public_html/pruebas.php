@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Softix:Vacantes</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/formStyle.css">
+    <title>Document</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -15,13 +13,8 @@
 
 <body>
 
-    <?php
-    include_once "header.html";
-    ?>
-
     <div class="container">
-        <form action="generarPDF.php" method="post" enctype="multipart/form-data">
-
+        <form action="generarPDF.php" method="POST">
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -43,8 +36,8 @@
             </div>
 
             <div class="form-group">
-                <label for="file">Foto de identificación:</label>
-                <input type="file" id="file" name="file" class="form-control-file" required>
+                <label for="foto">Foto de identificación:</label>
+                <input type="file" class="form-control-file" id="foto" name="foto" required>
             </div>
 
             <div class="form-group">
@@ -93,38 +86,31 @@
             <div class="form-group">
                 <label for="lenguajes_programacion">Lenguajes de Programación:</label><br>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="java" name="lenguajes_programacion[]"
-                        value="Java">
+                    <input type="checkbox" class="form-check-input" id="java" name="lenguajes_programacion[]" value="Java">
                     <label class="form-check-label" for="java">Java</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="php" name="lenguajes_programacion[]"
-                        value="PHP">
+                    <input type="checkbox" class="form-check-input" id="php" name="lenguajes_programacion[]" value="PHP">
                     <label class="form-check-label" for="php">PHP</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="python" name="lenguajes_programacion[]"
-                        value="Python">
+                    <input type="checkbox" class="form-check-input" id="python" name="lenguajes_programacion[]" value="Python">
                     <label class="form-check-label" for="python">Python</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="javascript" name="lenguajes_programacion[]"
-                        value="JavaScript">
+                    <input type="checkbox" class="form-check-input" id="javascript" name="lenguajes_programacion[]" value="JavaScript">
                     <label class="form-check-label" for="javascript">JavaScript</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="csharp" name="lenguajes_programacion[]"
-                        value="C#">
+                    <input type="checkbox" class="form-check-input" id="csharp" name="lenguajes_programacion[]" value="C#">
                     <label class="form-check-label" for="csharp">C#</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="ruby" name="lenguajes_programacion[]"
-                        value="Ruby">
+                    <input type="checkbox" class="form-check-input" id="ruby" name="lenguajes_programacion[]" value="Ruby">
                     <label class="form-check-label" for="ruby">Ruby</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="swift" name="lenguajes_programacion[]"
-                        value="Swift">
+                    <input type="checkbox" class="form-check-input" id="swift" name="lenguajes_programacion[]" value="Swift">
                     <label class="form-check-label" for="swift">Swift</label>
                 </div>
                 <div class="form-check">
@@ -132,8 +118,7 @@
                     <label class="form-check-label" for="go">Go</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="rust" name="lenguajes_programacion[]"
-                        value="Rust">
+                    <input type="checkbox" class="form-check-input" id="rust" name="lenguajes_programacion[]" value="Rust">
                     <label class="form-check-label" for="rust">Rust</label>
                 </div>
             </div>

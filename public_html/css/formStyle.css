@@ -1,0 +1,43 @@
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+    }
+
+    .container {
+        margin-top: 100px; /* Ajusta este valor según la altura de tu header */
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        color: #333333;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #cccccc;
+    }
+
+    input[type="submit"] {
+        background-color: #4682b4;
+        color: white;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #4169e1;
+    }

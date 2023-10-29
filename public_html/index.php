@@ -18,20 +18,9 @@
 
 <body>
 
-    <!-- header -->
-    <header class="header">
-        <a href="" class="logo">SOFTIX</a>
-        <nav class="navbar">
-            <a href="#home" class="active">Inicio</a>
-            <a href="#">Servicios</a>
-            <a href="#contacto">Contacto</a>
-            <a href="#">Registrate</a>
-        </nav>
-
-        <div class="bx bx-moon" id="darkMode-icon"></div>
-
-        <div class="bx bx-menu" id="menu-icon"></div>
-    </header>
+    <?php
+        include_once 'header.html';
+    ?>
 
     <!--inicio home-->
     <section class="home" id="home">
@@ -242,15 +231,7 @@
     </section>
 
     <!-- footer design -->
-    <footer class="footer">
-        <div class="footer-text">
-            <p>Copyright &copy; 2023 por SOFTIX | Todos los Derechos Reservados</p>
-        </div>
 
-        <div class="footer-iconTop">
-            <a href="#home"><i class='bx bx-up-arrow-alt' ></i></a>
-        </div>
-    </footer>
 
     <!-- scroll reveal -->
     <script src="https://unpkg.com/scrollreveal"></script>
