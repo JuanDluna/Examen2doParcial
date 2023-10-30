@@ -41,26 +41,30 @@
                     <i class='bx bxs-user-circle'></i>
                 </button>
                 <div class="dropdown-menu">
-                    <?php if (isset($_SESSION['user_id'])) { ?>
+                    <?php if (isset($_COOKIE['token'])) { ?>
                         <a class="dropdown-item" href="#">Mi cuenta</a></li>
-                        <a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                        <a class="dropdown-item" href="cerrar_sesion.php">Cerrar sesión</a></li>
                     <?php } else { ?>
-                        <form class="px-4 py-3">
+                        <form class="px-4 py-3" id="form_user_login" novalidate method= "post" >
                             <div class="form-group">
-                                <label for="exampleDropdownFormEmail1">Correo Electrónico: </label>
-                                <input type="email" class="form-control" id="exampleDropdownFormEmail1"
-                                    placeholder="email@example.com">
+                                <label for="exampleDropdownFormEmail1">User: </label>
+                                <input type="text" class="form-control" id="exampleDropdownFormEmail1"
+                                    placeholder="nombre usuario" required name="username">
                             </div>
                             <div class="form-group">
                                 <label for="exampleDropdownFormPassword1">Contraseña: </label>
                                 <input type="password" class="form-control" id="exampleDropdownFormPassword1"
-                                    placeholder="Password">
+                                    placeholder="Password" required name="password">
                             </div>
                             <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                         </form>
                         <div class="dropdown-divider"></div>
-                        <a href="#" data-toggle="modal" data-target="#registerModal">¿Nuevo? ¡Registrate!</a>
-
+                        <a href="#" data-toggle="modal" data-target="#registerModal ">¿Nuevo? ¡Registrate!</a>
+                        
+                        <div id="respuesta">
+                            
+                        </div>
+                        
                     <?php } ?>
 
                 </div>
@@ -70,6 +74,7 @@
 
         <div class="bx bx-menu" id="menu-icon"></div>
     </header>
+
 
     <!-- Register Modal -->
     <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
@@ -328,6 +333,32 @@
     <!-- swiper js -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>    
+        $(document).ready(function() {
+            console.log("Document ready event triggered.");
+
+            // Captura el evento de envío del formulario
+            $("#form_user_login").submit(function(e) {
+                e.preventDefault(); // Evita la recarga de la página
+                console.log("Formulario enviado");
+
+                // Realiza una solicitud AJAX al archivo procesar.php
+                $.post("procesar_login.php", $(this).serialize(), function(respuesta) {
+                    console.log("Respuesta del servidor:", respuesta);
+                    // Muestra la respuesta del servidor en el div "respuesta"
+                    if (respuesta.resultado === "exito") {
+                        console.log("Feliz");
+                        $("#respuesta").html('Bienvenido!');
+                    } else if (respuesta.resultado === "contrasena_incorrecta") {
+                        $("#respuesta").html('Contraseña incorrecta!');
+                    } else if (respuesta.resultado === "usuario_no_encontrado") {
+                        $("#respuesta").html('Usuario no encontrado');
+                    }
+                });
+            });
+        });
+    </script>
     <!-- custom js -->
     <script src="js/script.js"></script>
 </body>
