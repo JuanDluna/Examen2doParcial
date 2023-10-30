@@ -1,43 +1,35 @@
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f0f0f0;
-    }
+:root{
+    --bg-color: #fdfdfd;
+    --text-color: #333;
+    --main-color: #754ef9;
+    --white-color: #fdfdfd;
+    --shadow-color: rgba(0, 0, 0, .2);
+}
 
-    header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 100;
-    }
+.container{
+    margin-top: 14em;
+    font-size: large;
+}
 
-    .container {
-        margin-top: 100px; /* Ajusta este valor según la altura de tu header */
-    }
+.container .form-control{
+    font-size: 1em;
+    border-radius: 10px;
+    border: 1px solid var(--main-color);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.nombre{
+    display: flex;
+    justify-content: space-around;
+}
 
-    .form-group {
-        margin-bottom: 15px;
-    }
+.opcProgramming{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}	
 
-    label {
-        display: block;
-        color: #333333;
-    }
-
-    input, select {
-        width: 100%;
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #cccccc;
-    }
-
-    input[type="submit"] {
-        background-color: #4682b4;
-        color: white;
-        cursor: pointer;
-    }
-
-    input[type="submit"]:hover {
-        background-color: #4169e1;
-    }
+.btn{
+    font-size: 5em;
+    background-color: red;
+}

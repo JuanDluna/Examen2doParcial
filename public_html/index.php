@@ -17,9 +17,10 @@
     <!-- link javascript -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <!-- link css -->
-    <link rel="stylesheet" href="css/style.css">
     <!-- iconos -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -33,8 +34,8 @@
             <a href="#" class="btn">Servicios</a>
             <a href="index.php#contacto" class="btn">Contacto</a>
             <?php if (isset($_COOKIE['token'])) { ?>
-            <a href="vacanteForm.php" class="btn">Trabaja con nosotros</a>
-            <?php }?>
+                <a href="vacanteForm.php" class="btn">Trabaja con nosotros</a>
+            <?php } ?>
             <div class="dropdown">
                 <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -45,7 +46,7 @@
                         <a class="dropdown-item" href="#">Mi cuenta</a></li>
                         <a class="dropdown-item" href="cerrar_sesion.php">Cerrar sesión</a></li>
                     <?php } else { ?>
-                        <form class="px-4 py-3" id="form_user_login" novalidate method= "post" >
+                        <form class="px-4 py-3" id="form_user_login" novalidate method="post">
                             <div class="form-group">
                                 <label for="exampleDropdownFormEmail1">User: </label>
                                 <input type="text" class="form-control" id="exampleDropdownFormEmail1"
@@ -60,19 +61,18 @@
                         </form>
                         <div class="dropdown-divider"></div>
                         <a href="#" data-toggle="modal" data-target="#registerModal ">¿Nuevo? ¡Registrate!</a>
-                        
-                        <div id="respuesta">
-                            
-                        </div>
-                        
-                    <?php } ?>
 
+                        <div id="respuesta">
+
+                        </div>
+
+                    <?php } ?>
                 </div>
             </div>
         </nav>
-        <div class="bx bx-moon" id="darkMode-icon"></div>
+        <div class="bx bx-moon btn" id="darkMode-icon"></div>
 
-        <div class="bx bx-menu" id="menu-icon"></div>
+        <div class="bx bx-menu " id="menu-icon"></div>
     </header>
 
 
@@ -316,7 +316,7 @@
                 <input type="email" placeholder="Correo electronico">
             </div>
             <div class="input-box">
-                <input type="number" placeholder="Numero Celular">
+                <input type="tel" placeholder="Numero Celular">
                 <input type="text" placeholder="Direccion">
             </div>
             <textarea name="" id="" cols="30" rows="10" placeholder="Tu mensaje"></textarea>
@@ -334,26 +334,27 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>    
-        $(document).ready(function() {
+    <script>
+
+        $(document).ready(function () {
             console.log("Document ready event triggered.");
 
             // Captura el evento de envío del formulario
-            $("#form_user_login").submit(function(e) {
+            $("#form_user_login").submit(function (e) {
                 e.preventDefault(); // Evita la recarga de la página
                 console.log("Formulario enviado");
 
                 // Realiza una solicitud AJAX al archivo procesar.php
-                $.post("procesar_login.php", $(this).serialize(), function(respuesta) {
+                $.post("procesar_login.php", $(this).serialize(), function (respuesta) {
                     console.log("Respuesta del servidor:", respuesta);
                     // Muestra la respuesta del servidor en el div "respuesta"
                     if (respuesta.resultado === "exito") {
-                        console.log("Feliz");
-                        $("#respuesta").html('Bienvenido!');
+                        alert("Bienvenido!");
+                        location.reload(); // Reloads the current page
                     } else if (respuesta.resultado === "contrasena_incorrecta") {
-                        $("#respuesta").html('Contraseña incorrecta!');
+                        alert("Contraseña incorrecta!");
                     } else if (respuesta.resultado === "usuario_no_encontrado") {
-                        $("#respuesta").html('Usuario no encontrado');
+                        alert("Usuario no encontrado!");
                     }
                 });
             });
