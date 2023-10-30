@@ -29,6 +29,22 @@
     <!-- header -->
     <header class="header">
         <a href="index.php" class="logo">SOFTIX</a>
+        <?php
+
+            $horaActual = date("H:i");
+            $horaActual = intval(substr( $horaActual,0,-1));
+            
+            if ($horaActual <= 12) { ?>
+                <p>Buenos dias</p>
+                
+            <?php } elseif ($horaActual <= 19) { ?>
+                <p>Buenas tardes</p>
+
+            <?php }else { ?>
+                <p>Buenas noches</p>
+                
+            <?php } 
+        ?>        
         <nav class="navbar">
             <a href="index.php" class="btn">Inicio</a>
             <a href="servicios.php" class="btn">Servicios</a>
