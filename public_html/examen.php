@@ -15,9 +15,6 @@
     include_once "header.php";
     require_once "respuestas.php";
 
-    
-
-
     if (isset($_SESSION['useremail'])) {
         
         $correo = $_SESSION['useremail'];
@@ -52,17 +49,18 @@
     unset($question);
     shuffle($quiz);
 
-    echo "<form action='' method='post'>";
+    echo "<form action='resultados.php' method='post'>";
     // Display the questions
     foreach ($quiz as $key => $value) {
-        echo "<div>";
-        echo "<h3>" . ($key + 1) . ". " . $value['question'] . "</h3>";
-        echo "<ul>";
+        echo "<div class='question'>";
+        $question = $value['question'];
+        echo "<h3 class='question-title'><label for='$question'>" . ($key + 1) . ". " . $value['question'] . "</label></h3>";
+        echo "<ul class='question-options'>";
         foreach ($value['answers'] as $option => $answer) {
-            echo "<li>";
-            echo "<div>";
-            echo "<input type='radio' name='pregunta" . ($key + 1) . "' id='pregunta" . ($key + 1) . "-" . $option . "' value='" . $option . "'>";
-            echo "<label for='pregunta" . ($key + 1) . "-" . $option . "' id='pregunta" . ($key + 1) . "-" . $option . "-label'>" . $answer . "</label>";
+            echo "<li class='question-option'>";
+            echo "<div class='question-option-container'>";
+            echo "<input type='radio' name='$question' id='pregunta" . ($key + 1) . "-" . $option . "' value='" . $option . "'>";
+            echo "<label for='pregunta" . ($key + 1) . "-" . $option . "'  class='question-option-label'>" . $answer . "</label>";
             echo "</div>";
             echo "</li>";
         }
@@ -72,13 +70,14 @@
     echo "<button type='submit'>Submit</button>";
     echo "</form>";
 
-
-
-
     include "footer.html";
     ?>
-
-
+    <script>
+        window.addEventListener('beforeunload', function (e) {
+            e.preventDefault();
+            e.returnValue = '';
+        });
+    </script>
 </body>
 
 </html>

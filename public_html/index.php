@@ -364,6 +364,7 @@
 
     <!-- footer design -->
 
+    <?php include_once "footer.html"; ?>
 
     <!-- scroll reveal -->
     <script src="https://unpkg.com/scrollreveal"></script>
