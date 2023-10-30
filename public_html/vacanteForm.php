@@ -16,27 +16,28 @@
 <body>
     <div class="header">
         <?php
-        if (!isset($_COOKIE['token']))
+        if (!isset($_COOKIE['token'])) {
             header("Location: index.php");
+        }
 
         session_start();
 
         if (isset($_SESSION['useremail'])) {
             $correo = $_SESSION['useremail'];
             $file = fopen("CodigoExamen.txt", "r");
-            while (!feof($file)) {
-                $linea = fgets($file);
-                $linea = explode(" ", $linea);
-                echo $linea[1] . " " . $correo . "<br>";
-                if(trim($linea[1]) == $correo){
-                    header("Location: verificadorExamen.php");
-                    break;
+                while (!feof($file)) {
+                    $linea = fgets($file);
+                    $linea = explode(" ", $linea);
+                    if (!empty($linea[1]) && trim($linea[1]) == $correo) {
+                        header("Location: verificadorExamen.php");
+                        break;
+                    }
                 }
-            }
+            
 
             fclose($file);
 
-        }else{
+        } else {
             die("No se ha iniciado sesión");
         }
 

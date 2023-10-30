@@ -56,6 +56,7 @@
         ?>
         <nav class="navbar">
             <a href="index.php" class="btn">Inicio</a>
+            <a href="galeria.php" class="btn">Galeria</a>
             <a href="servicios.php" class="btn">Servicios</a>
             <a href="index.php#contacto" class="btn">Contacto</a>
             <?php if (isset($_COOKIE['token'])) { ?>

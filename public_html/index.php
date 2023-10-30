@@ -1,3 +1,8 @@
+<?php 
+session_start();
+ob_start(); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,9 +36,6 @@
     <header class="header">
         <a href="index.php" class="logo">SOFTIX</a>
         <?php
-
-        session_start();
-
 
         $horaActual = date("H:i");
         $horaActual = intval(substr($horaActual, 0, -1));
@@ -87,14 +89,14 @@
                     <?php } else { ?>
                         <form class="px-4 py-3" id="form_user_login" novalidate method="post">
                             <div class="form-group">
-                                <label for="exampleDropdownFormEmail1">User: </label>
+                                <label for="exampleDropdownFormEmail1">Usuario: </label>
                                 <input type="text" class="form-control" id="exampleDropdownFormEmail1"
-                                    placeholder="nombre usuario" required name="username">
+                                    placeholder="Usuario" required name="username">
                             </div>
                             <div class="form-group">
                                 <label for="exampleDropdownFormPassword1">Contraseña: </label>
                                 <input type="password" class="form-control" id="exampleDropdownFormPassword1"
-                                    placeholder="Password" required name="password">
+                                    placeholder="Contraseña" required name="password">
                             </div>
                             <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                         </form>

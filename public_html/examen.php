@@ -27,8 +27,7 @@
             if (strpos($line, $correo) !== false) {
                 $codigo = explode(" ", $line);
                 if($codigo[0] == "HECHO"){
-                    echo "Esta validacion sigue funcionando, tranquilo";
-                    // header("Location: index.php");
+                    header("Location: resultados.php");
                 }else{
                     // Si se encuentra el correo, modificar el código de acceso
                     $line = str_replace($codigo[0],"HECHO", $line);
@@ -59,7 +58,7 @@
         foreach ($value['answers'] as $option => $answer) {
             echo "<li class='question-option'>";
             echo "<div class='question-option-container'>";
-            echo "<input type='radio' name='$question' id='pregunta" . ($key + 1) . "-" . $option . "' value='" . $option . "'>";
+            echo "<input type='radio' name='$question' id='pregunta" . ($key + 1) . "-" . $option . "' value='" . $answer. "'>";
             echo "<label for='pregunta" . ($key + 1) . "-" . $option . "'  class='question-option-label'>" . $answer . "</label>";
             echo "</div>";
             echo "</li>";

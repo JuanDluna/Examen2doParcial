@@ -29,7 +29,7 @@
             $linea = fgets($file);
             $linea = explode(" ", $linea);
             if (trim($linea[0]) == "HECHO" && trim($linea[1]) == $correo) {
-                header("Location: index.php");
+                header("Location: resultados.php");
             } else if ($linea[0] != "HECHO" && trim($linea[1]) == $correo) {
                 $codigoUNIQ = $linea[0];
                 $hecho = false;
@@ -38,7 +38,7 @@
         }
         fclose($file);
         if ($hecho == true)
-            header(" index.php");
+            header("Location: resultados.php");
     }
 
     include_once "header.php";
