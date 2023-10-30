@@ -1,0 +1,46 @@
+.image-gallery {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .image-card {
+    position: relative;
+    overflow: hidden;
+    width: 24%; /* Ajusta el ancho de cada tarjeta según tus necesidades */
+  }
+  
+  .background-image {
+    width: 100%;
+    filter: blur(10px); /* Aplicar un filtro de desenfoque a la imagen de fondo */
+  }
+  
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente para el texto */
+    transition: opacity 0.3s;
+  }
+  
+  .main-image {
+    width: 80%; /* Tamaño de la imagen principal */
+  }
+  
+  .image-text {
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .image-card:hover .image-overlay {
+    opacity: 1; /* Mostrar la superposición al pasar el mouse sobre la tarjeta */
+  }
+  
