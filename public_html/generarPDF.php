@@ -62,9 +62,17 @@ $firma64 = "data:image/png;base64," . base64_encode(file_get_contents("img/Firma
 
 $fecha_actual = date("d/m/Y");
 
-$codigoExamen = uniqid();
-$file = fopen("CodigoExamen.txt", "a+");
-fwrite($file, $codigoExamen . "\n");
+session_start();
+
+if(isset($_SESSION['useremail'])){
+
+   $correo = $_SESSION['useremail']; 
+
+    $codigoExamen = uniqid();
+    $file = fopen("CodigoExamen.txt", "a+");
+    fwrite($file, $codigoExamen . " " . $correo);
+}
+
 
 // Generate the HTML content
 
@@ -182,22 +190,6 @@ $dompdf->render();
 unlink($targetFile);
 rmdir("tmp");
 
-if(isset($_COOKIE["token"])){
-    $handle = fopen('secretKey.txt','r');
-    $jwt =  "token";
-    $secret_key = fscanf($handle,"%s");
-    $array  = 'HS256';
-    fclose($handle);
-
-    try {
-        $decoded = JWT::decode($jwt, $secret_key[0], $array);
-    
-    
-    } catch (Exception $e) {
-        echo 'Caught exception: ',  $e->getMessage(), "\n";
-    }
-    echo "Decoded token: " . $decoded_token;
-}
 
 
 
