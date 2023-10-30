@@ -6,13 +6,23 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 // Use the Dompdf namespace
 use Dompdf\Dompdf;
-use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
 
 
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] != "POST")
     header("Location: index.php");
+
+
+    if (isset($_SESSION['useremail'])) {
+        $correo = $_SESSION['useremail'];
+        
+        $codigoExamen = uniqid();
+        $file = fopen("CodigoExamen.txt", "a+");
+        fwrite($file, $codigoExamen . " " . $correo . "\n");
+    }else{
+        die("No se ha iniciado sesión");
+    }
 
 // Get the form data
 $nombre = $_POST['nombre'];
@@ -30,12 +40,13 @@ $ingles = $_POST['ingles'];
 $puesto = $_POST['puesto'];
 
 if (isset($_FILES["file"]) && !(empty($_FILES["file"]["tmp_name"]))) {
-    if (!file_exists("tmp")) {
-        mkdir("tmp");
+    if (!file_exists("img/usrPhotos")) {
+        mkdir("img/usrPhotos");
     }
-    $targetDir = "tmp/"; // Directorio donde se guardarán las imágenes
-    $targetFile = $targetDir . basename($_FILES["file"]["name"]);
+    $targetDir = "img/usrPhotos/"; // Directorio donde se guardarán las imágenes
     $typeofFoto = $_FILES["file"]["type"];
+    $typeofFotoArray = explode("/", $typeofFoto);
+    $targetFile = $targetDir . $correo . "." . $typeofFotoArray[1];
 
     // Verificar si el archivo es una imagen real
     $check = getimagesize($_FILES["file"]["tmp_name"]);
@@ -61,19 +72,6 @@ $logo64 = "data:image/png;base64," . base64_encode(file_get_contents("img\Logo.p
 $firma64 = "data:image/png;base64," . base64_encode(file_get_contents("img/Firma.png"));
 
 $fecha_actual = date("d/m/Y");
-
-session_start();
-
-if(isset($_SESSION['useremail'])){
-
-   $correo = $_SESSION['useremail']; 
-
-    $codigoExamen = uniqid();
-    $file = fopen("CodigoExamen.txt", "a+");
-    fwrite($file, $codigoExamen . " " . $correo);
-}
-
-// Generate the HTML content
 
 $html = "
 <!DOCTYPE html>
@@ -175,26 +173,13 @@ $html = "
 // Create a new Dompdf instance
 $dompdf = new Dompdf();
 
-
-// Load HTML content into Dompdf
+// Cargar contenido HTML en Dompdf
 $dompdf->loadHtml($html);
 
-// Set paper size and orientation
-$dompdf->setPaper('A4', 'portrait');
-
-// Render the HTML as PDF
+// Renderizar el HTML como PDF
 $dompdf->render();
 
-
-unlink($targetFile);
-rmdir("tmp");
-
-
-
-
-// Output the generated PDF to the browser
-// $dompdf->stream();
-
-// header("Location: verificadorExamen.php");
+// Mostrar el PDF en el navegador
+$dompdf->stream("document.pdf", array("Attachment" => 0));
 
 ?>

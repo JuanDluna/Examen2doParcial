@@ -19,7 +19,7 @@
         <a href="index.php" class="logo">SOFTIX</a>
         <nav class="navbar">
             <a href="index.php" class="btn">Inicio</a>
-            <a href="#" class="btn">Servicios</a>
+            <a href="servicios.php" class="btn">Servicios</a>
             <a href="index.php#contacto" class="btn">Contacto</a>
             <?php if (isset($_COOKIE['token'])) { ?>
             <a href="vacanteForm.php" class="btn">Trabaja con nosotros</a>

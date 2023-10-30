@@ -19,14 +19,31 @@
         if (!isset($_COOKIE['token']))
             header("Location: index.php");
 
+        session_start();
 
+        if (isset($_SESSION['useremail'])) {
+            $correo = $_SESSION['useremail'];
+            $file = fopen("CodigoExamen.txt", "r");
+            while (!feof($file)) {
+                $linea = fgets($file);
+                $linea = explode(" ", $linea);
+                if($linea[1] == $correo){
+                    header("Location: verificadorExamen.php");
+                }
+            }
+
+            fclose($file);
+
+        }else{
+            die("No se ha iniciado sesión");
+        }
 
         include_once "header.php";
         ?>
     </div>
 
     <div class="container">
-        <form action="generarPDF.php" method="post" enctype="multipart/form-data">
+        <form action="generarPDF.php" method="post" enctype="multipart/form-data" target="_blank">
             <div class="nombre">
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
@@ -241,7 +258,14 @@
                 }
             });
         });
+
+        // Agregar un listener al botón de enviar
+        enviar.addEventListener('click', function () {
+            // Redirigir a la página deseada
+            window.location.href = "verificadorExamen.php";
+        });
     </script>
+
 
 </body>
 
