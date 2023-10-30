@@ -5,41 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Softix:Vacantes</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/formStyle.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/formStyle.css">
 
 </head>
 
 <body>
+    <div class="header">
+        <?php
+        if (!isset($_COOKIE['token']))
+            header("Location: index.php");
 
-    <?php
-    if (!isset($_COOKIE['token'])) 
-        header("Location: index.php");
 
 
-    
-    include_once "header.html";
-    ?>
+        include_once "header.php";
+        ?>
+    </div>
 
     <div class="container">
         <form action="generarPDF.php" method="post" enctype="multipart/form-data">
+            <div class="nombre">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
 
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required>
-            </div>
+                <div class="form-group">
+                    <label for="apellido_paterno">Apellido Paterno:</label>
+                    <input type="text" class="form-control" id="apellido_paterno" name="apellido_paterno" required>
+                </div>
 
-            <div class="form-group">
-                <label for="apellido_paterno">Apellido Paterno:</label>
-                <input type="text" class="form-control" id="apellido_paterno" name="apellido_paterno" required>
-            </div>
-
-            <div class="form-group">
-                <label for="apellido_materno">Apellido Materno:</label>
-                <input type="text" class="form-control" id="apellido_materno" name="apellido_materno" required>
+                <div class="form-group">
+                    <label for="apellido_materno">Apellido Materno:</label>
+                    <input type="text" class="form-control" id="apellido_materno" name="apellido_materno" required>
+                </div>
             </div>
 
             <div class="form-group">
@@ -95,7 +97,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group opcProgramming">
                 <label for="lenguajes_programacion">Lenguajes de Programación:</label><br>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="java" name="lenguajes_programacion[]"

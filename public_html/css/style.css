@@ -70,12 +70,36 @@ body {
     margin-right: 3.5rem;
 }
 
+.dropdown-menu{
+    background-color: var(--main-color);
+    color: var(--white-color);
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.dropdown-menu button{
+    background-color: var(--white-color);
+    color: var(--main-color);
+}
+
+.dropdown-menu input{
+    font-size: 1em;
+}
+
+.dropdown-menu a{
+    text-decoration: none;
+    transition: font-size 0.3s ease-in-out;
+}
+.dropdown-menu a:hover{
+    font-size: larger;
+}
+
 .header.sticky .navbar a {
-    color: var(--text-color);
+    color: var(--white-color);
 }
 
 .header.sticky .navbar a.active {
-    color: var(--main-color);
+    color: var(--white-color);
 }
 
 .navbar a.active::before {
@@ -99,8 +123,11 @@ body {
     cursor: pointer;
 }
 
+#darkMode-icon::hover {
+    color: var(--main-color);
+}
 .header.sticky #darkMode-icon {
-    color: var(--text-color);
+    color: var(--white-color);
     opacity: .9;
 }
 
@@ -652,7 +679,7 @@ span {
         padding: 10rem 3% 2rem;
     }
 
-    .home .profession-container .profession-box {
+    .home .profession-container .profession-box e{
         right: -22rem;
     }
 
@@ -669,7 +696,7 @@ span {
     }
 
     .navbar a.active::before {
-        background: var(--main-color);
+        background: var(--white-color);
         opacity: .7;
     }
 
@@ -712,7 +739,7 @@ span {
         position: absolute;
         right: 7rem;
         font-size: 2.6rem;
-        color: var(--text-color);
+        color: var(--white-color);
         margin-bottom: .1rem;
     }
 
