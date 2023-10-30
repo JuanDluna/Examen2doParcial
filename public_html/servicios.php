@@ -4,50 +4,126 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Softix:servicios</title>
+    <link rel="shortcut icon" href="img\Logo.png" type="image/x-icon">
+
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- link javascript -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <!-- link css -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- iconos -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/formStyle.css">
 </head>
 <body>
-    <?php
+  <?php
     include_once("header.php");
-    ?>
-    <div class="container">
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <h1 class="display-4" style= "color: white;">Servicios</h1>
-        <p class="lead" style= "color: white; background: gray; transparency: .5">consulta nuestros servicios ahora.</p>
-      </div>
+  ?>
+<!-- ACERCA DE -->
+  <section class="about" id="#">
+    <div class="about-img">
+      <img src="img/servicios.png" alt="">
     </div>
-    <div class="card-deck">
-        <div class="card">
-          <img src="img/desarrollo.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">desarrollo web</h5>
-            <p class="card-text">El diseño web es un área enfocada en el desarrollo de interfaces digitales, como el diseño de sitios y aplicaciones para web. Para ello, los diseñadores web crean las páginas utilizando lenguajes de marcado como HTML.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="img\apps.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">desarrollo de aplicaciones moviles </h5>
-            <p class="card-text">Desarrollo de Aplicaciones Móviles con un enfoque UX. Satisfacemos al Usuario más Exigente. Expertos en Desarrollo de Apps. Desarrollamos Aplicaciones Móviles con un enfoque UX. Outsourcing TI. RPA. Desarrollo de Apps. Inteligencia Empresarial.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="img\BDD.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">bases de datos</h5>
-            <p class="card-text">Una base de datos es una recopilación organizada de información o datos estructurados, que normalmente se almacena de forma electrónica en un sistema </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
+    <div class="about-content">
+            <h2 class="heading">Nuestros <span>Servicios</span></h2>
+            <h3>Conoce mas acerca de nuestro trabajo</h3>
+            <p>Nos enorgullece ofrecer una amplia gama de servicios de 
+              alta calidad que están diseñados para satisfacer las necesidades 
+              de nuestros clientes. Nuestra experiencia y compromiso con la excelencia 
+              nos permiten ofrecer soluciones informáticas efectivas y personalizadas 
+              para su empresa.</p>
+            <a href="#imagenes" class="btn">Conoce mas ↓</a>
       </div>
-      <section class="contact" id="contacto">
+    </section>
+    <!-- imagenes -->
+    <section class="portfolio" id="imagenes">
+        <h2 class="heading">Servicios <span>Principales</span></h2>
+        <div class="portfolio-container">
+            <div class="portfolio-box">
+                <img src="img/servicio1.png" alt="">
+                <div class="portfolio-layer">
+                    <h4>Software a medida</h4>
+                    <p></p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="img/servicios2.png" alt="">
+                <div class="portfolio-layer">
+                    <h4>Consultoria tecnologica</h4>
+                    <p></p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="img/servicios3.png" alt="">
+                <div class="portfolio-layer">
+                    <h4>Desarrollo de apps moviles</h4>
+                    <p></p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="img/servicios4.png" alt="">
+                <div class="portfolio-layer">
+                    <h4>Desarrollo web y diseño</h4>
+                    <p></p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="img/servicios5.jpg" alt="">
+                <div class="portfolio-layer">
+                    <h4>Mantenimiento y soporte</h4>
+                    <p></p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="img/servicios6.png" alt="">
+                <div class="portfolio-layer">
+                    <h4>Integracion de sistemas</h4>
+                    <p></p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- MAS INFO -->
+  <section class="about" id="#">
+    <div class="about-img">
+      <img src="img/aprende.png" alt="">
+    </div>
+    <div class="about-content">
+            <h2 class="heading">Tecnologia e <span>Innovacion</span></h2>
+            <h3>SOFTIX es tu mejor lugar para aprender</h3>
+            <p>"En SOFTIX, nuestra pasión radica en forjar soluciones tecnológicas 
+              de vanguardia que no solo impulsan el éxito, sino que lo definen. 
+              Nuestra dedicación incansable a mantenernos a la vanguardia de la innovación 
+              nos permite ofrecer a su empresa lo último en avances tecnológicos.</p>
+            <p>Nuestra distinción reside en nuestro enfoque inquebrantable en el cliente. 
+              Comprendemos que cada empresa es única, y es por eso que personalizamos cada 
+              solución para satisfacer sus necesidades específicas. Al trabajar codo a codo con usted,
+               no solo somos proveedores de servicios, sino sus colaboradores, 
+               creando una relación basada en confianza y compromiso.</p>
+            <p>Nuestro equipo es un crisol de conocimiento técnico de élite. 
+              Con experiencia en una amplia gama de tecnologías, estamos preparados para abordar desafíos 
+              tecnológicos de cualquier magnitud. El dominio de la tecnología es nuestra fortaleza, 
+              y lo ponemos al servicio de su empresa.En el dinámico mundo digital, somos su socio de confianza. 
+              Nuestro compromiso es más que brindar servicios; es ser su guía constante en la travesía de la 
+              transformación tecnológica.No espere más. Contáctenos hoy mismo y descubra cómo nuestras soluciones 
+              a la medida pueden allanar el camino hacia el logro de sus metas tecnológicas. Su éxito es nuestro objetivo, 
+              y estamos ansiosos por ser parte de su viaje hacia la excelencia tecnológica."</p>
+      </div>
+    </section>
+    
+    <!-- contactanos -->
+    <section class="contact" id="contacto">
         <h2 class="heading">Quieres saber mas? <span>Contactanos!</span></h2>
 
         <form action="#">
@@ -63,7 +139,8 @@
             <input type="submit" placeholder="Enviar mensaje" class="btn">
         </form>
     </section>
-    </div>
+
+</div>
     </div>
     
 

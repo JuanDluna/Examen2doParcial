@@ -28,7 +28,7 @@
         while (!feof($file)) {
             $linea = fgets($file);
             $linea = explode(" ", $linea);
-            if ($linea[0] == "HECHO" && $linea[1] == $correo) {
+            if (trim($linea[0]) == "HECHO" && trim($linea[1]) == $correo) {
                 header("Location: index.php");
             }else if ($linea[0] != "HECHO" && trim($linea[1]) == $correo) {
                 $codigoUNIQ = $linea[0];
