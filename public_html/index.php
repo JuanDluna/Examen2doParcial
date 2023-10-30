@@ -88,26 +88,26 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action= "procesar_registro.php" novalidate method="post">
                         <div class="form-group">
                             <label for="registerName">Nombre</label>
-                            <input type="text" class="form-control" id="registerName" placeholder="Ingrese su nombre">
+                            <input type="text" class="form-control" id="registerName" placeholder="Ingrese su nombre" required name="username">
                         </div>
                         <div class="form-group">
                             <label for="registerEmail">Correo electrónico</label>
                             <input type="email" class="form-control" id="registerEmail"
-                                placeholder="Ingrese su correo electrónico">
+                                placeholder="Ingrese su correo electrónico" required name="useremail">
                         </div>
                         <div class="form-group">
                             <label for="registerPassword">Contraseña</label>
                             <input type="password" class="form-control" id="registerPassword"
-                                placeholder="Ingrese su contraseña">
+                                placeholder="Ingrese su contraseña" required name="password">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Registrarse</button>
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Registrarse</button>
                 </div>
             </div>
         </div>

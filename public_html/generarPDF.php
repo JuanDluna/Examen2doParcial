@@ -73,7 +73,6 @@ if(isset($_SESSION['useremail'])){
     fwrite($file, $codigoExamen . " " . $correo);
 }
 
-
 // Generate the HTML content
 
 $html = "
