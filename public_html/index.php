@@ -32,7 +32,7 @@
             <a href="index.php" class="btn">Inicio</a>
             <a href="#" class="btn">Servicios</a>
             <a href="index.php#contacto" class="btn">Contacto</a>
-            <?php if (isset($_SESSION['user_id'])) { ?>
+            <?php if (isset($_COOKIE['token'])) { ?>
             <a href="vacanteForm.php" class="btn">Trabaja con nosotros</a>
             <?php }?>
             <div class="dropdown">

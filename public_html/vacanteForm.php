@@ -16,6 +16,11 @@
 <body>
 
     <?php
+    if (!isset($_COOKIE['token'])) 
+        header("Location: index.php");
+
+
+    
     include_once "header.html";
     ?>
 

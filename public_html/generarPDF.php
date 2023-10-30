@@ -3,64 +3,70 @@
 // Require composer autoload file
 require_once __DIR__ . '/vendor/autoload.php';
 
+
 // Use the Dompdf namespace
 use Dompdf\Dompdf;
-use Dompdf\Options;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the form data
-    $nombre = $_POST['nombre'];
-    $apellido_paterno = $_POST['apellido_paterno'];
-    $apellido_materno = $_POST['apellido_materno'];
-    $telefono = $_POST['telefono'];
-    // $foto = "data:image/png;base64," . base64_encode(file_get_contents($_POST['foto']));
-    $dia = $_POST['dia'];
-    $mes = $_POST['mes'];
-    $anio = $_POST['anio'];
-    $lenguajes_programacion = implode(", ", $_POST['lenguajes_programacion']);
-    $disponibilidad_viajar = $_POST['disponibilidad_viajar'];
-    $disponibilidad_residencia = $_POST['disponibilidad_residencia'];
-    $ingles = $_POST['ingles'];
-    $puesto = $_POST['puesto'];
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["file"]) && !(empty($_FILES["file"]["tmp_name"]))) {
-        if (!file_exists("tmp")){
-            mkdir("tmp");
-        }
-        $targetDir = "tmp/"; // Directorio donde se guardarán las imágenes
-        $targetFile = $targetDir . basename($_FILES["file"]["name"]);
-        $typeofFoto = $_FILES["file"]["type"];
 
-        // Verificar si el archivo es una imagen real
-        $check = getimagesize($_FILES["file"]["tmp_name"]);
-        if ($check !== false) {
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
-            } else {
-                echo "Hubo un problema al mover la foto.";
-                die();
-            }
+if ($_SERVER["REQUEST_METHOD"] != "POST")
+    header("Location: index.php");
+
+// Get the form data
+$nombre = $_POST['nombre'];
+$apellido_paterno = $_POST['apellido_paterno'];
+$apellido_materno = $_POST['apellido_materno'];
+$telefono = $_POST['telefono'];
+// $foto = "data:image/png;base64," . base64_encode(file_get_contents($_POST['foto']));
+$dia = $_POST['dia'];
+$mes = $_POST['mes'];
+$anio = $_POST['anio'];
+$lenguajes_programacion = implode(", ", $_POST['lenguajes_programacion']);
+$disponibilidad_viajar = $_POST['disponibilidad_viajar'];
+$disponibilidad_residencia = $_POST['disponibilidad_residencia'];
+$ingles = $_POST['ingles'];
+$puesto = $_POST['puesto'];
+
+if (isset($_FILES["file"]) && !(empty($_FILES["file"]["tmp_name"]))) {
+    if (!file_exists("tmp")) {
+        mkdir("tmp");
+    }
+    $targetDir = "tmp/"; // Directorio donde se guardarán las imágenes
+    $targetFile = $targetDir . basename($_FILES["file"]["name"]);
+    $typeofFoto = $_FILES["file"]["type"];
+
+    // Verificar si el archivo es una imagen real
+    $check = getimagesize($_FILES["file"]["tmp_name"]);
+    if ($check !== false) {
+        if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
         } else {
-            echo "No es imagen";
+            echo "Hubo un problema al mover la foto.";
             die();
         }
     } else {
-        echo "Hubo un problema al subir el archivo.";
+        echo "No es imagen";
         die();
     }
+} else {
+    echo "Hubo un problema al subir el archivo.";
+    die();
+}
 
-    $foto64 = "data:image/$typeofFoto;base64," . base64_encode(file_get_contents($targetFile));
+$foto64 = "data:image/$typeofFoto;base64," . base64_encode(file_get_contents($targetFile));
 
-    $logo64 = "data:image/png;base64," . base64_encode(file_get_contents("img\Logo.png"));
+$logo64 = "data:image/png;base64," . base64_encode(file_get_contents("img\Logo.png"));
 
-    $firma64 = "data:image/png;base64," . base64_encode(file_get_contents("img/Firma.png"));
+$firma64 = "data:image/png;base64," . base64_encode(file_get_contents("img/Firma.png"));
 
-    $fecha_actual = date("d/m/Y");
+$fecha_actual = date("d/m/Y");
 
-    $codigoExamen = uniqid(); 
-    $file = fopen("CodigoExamen.txt", "a+");
-    fwrite($file, $codigoExamen . "\n");
+$codigoExamen = uniqid();
+$file = fopen("CodigoExamen.txt", "a+");
+fwrite($file, $codigoExamen . "\n");
 
-    // Generate the HTML content
+// Generate the HTML content
 
 $html = "
 <!DOCTYPE html>
@@ -159,29 +165,45 @@ $html = "
 
 </html> ";
 
-    // Create a new Dompdf instance
-    $dompdf = new Dompdf();
+// Create a new Dompdf instance
+$dompdf = new Dompdf();
 
 
-    // Load HTML content into Dompdf
-    $dompdf->loadHtml($html);
+// Load HTML content into Dompdf
+$dompdf->loadHtml($html);
 
-    // Set paper size and orientation
-    $dompdf->setPaper('A4', 'portrait');
+// Set paper size and orientation
+$dompdf->setPaper('A4', 'portrait');
 
-    // Render the HTML as PDF
-    $dompdf->render();
+// Render the HTML as PDF
+$dompdf->render();
+
+
+unlink($targetFile);
+rmdir("tmp");
+
+if(isset($_COOKIE["token"])){
+    $handle = fopen('secretKey.txt','r');
+    $jwt =  "token";
+    $secret_key = fscanf($handle,"%s");
+    $array  = 'HS256';
+    fclose($handle);
+
+    try {
+        $decoded = JWT::decode($jwt, $secret_key[0], $array);
     
-
-    unlink($targetFile);
-    rmdir("tmp");
-
-    // header("Location: verificadorExamen.php");
-
-    // Output the generated PDF to the browser
-    $dompdf->stream();
-
-} else {
-    header("Location: index.php");
+    
+    } catch (Exception $e) {
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+    }
+    echo "Decoded token: " . $decoded_token;
 }
+
+
+
+// Output the generated PDF to the browser
+// $dompdf->stream();
+
+// header("Location: verificadorExamen.php");
+
 ?>
