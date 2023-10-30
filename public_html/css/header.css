@@ -9,6 +9,7 @@
 .header{
     background-color: var(--main-color); 
     font-size: 2em;
+    display: flex;
 }
 
 .header>a{

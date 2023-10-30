@@ -2,8 +2,6 @@
 	url = https://github.com/dompdf/dompdf
 [submodule "public_html/vendor/masterminds/html5"]
 	url = https://github.com/Masterminds/html5-php
-[submodule "public_html/vendor/phenx/php-font-lib"]
-	url = https://github.com/PhenX/CPdf
 [submodule "public_html/vendor/sabberworm/php-css-parser"]
 	url = https://github.com/sabberworm/PHP-CSS-Parser
 [submodule "public_html/vendor/phenx/php-svg-lib"]

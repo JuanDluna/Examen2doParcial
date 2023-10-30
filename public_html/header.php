@@ -21,10 +21,10 @@
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-
-        $horaActual = date("H:i");
-        $horaActual = intval(substr($horaActual, 0, -1));
-
+        // set the default timezone to use.
+        date_default_timezone_set('America/Mexico_City');
+        $horaActual = date("H:i:s");
+        $hora = substr($horaActual, 0, 2);
         if (isset($_SESSION['useremail'])) {
             $correo = $_SESSION['useremail'];
             $file = fopen("accounts.txt", "r");
@@ -38,17 +38,17 @@
                 }
             }
             fclose($file);
-            if ($horaActual <= 12)
+            if ($hora <= 12)
                 echo "<p class='saludo'>Buenos dias $usuario</p>";
-            elseif ($horaActual <= 19)
+            elseif ($hora <= 19)
                 echo "<p class='saludo'>Buenas tardes $usuario</p>";
             else
                 echo "<p class='saludo'>Buenas noches $usuario</p>";
 
         } else {
-            if ($horaActual <= 12)
+            if ($hora <= 12)
                 echo "<p class='saludo'>Buenos dias</p>";
-            elseif ($horaActual <= 19)
+            elseif ($hora <= 19)
                 echo "<p class='saludo'>Buenas tardes</p>";
             else
                 echo "<p class='saludo'>Buenas noches</p>";
@@ -60,8 +60,8 @@
             <a href="servicios.php" class="btn">Servicios</a>
             <a href="index.php#contacto" class="btn">Contacto</a>
             <?php if (isset($_COOKIE['token'])) { ?>
-            <a href="vacanteForm.php" class="btn">Trabaja con nosotros</a>
-            <?php }?>
+                <a href="vacanteForm.php" class="btn">Trabaja con nosotros</a>
+            <?php } ?>
             <div class="dropdown">
                 <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -69,28 +69,28 @@
                 </button>
                 <div class="dropdown-menu">
                     <?php if (isset($_COOKIE['token'])) { ?>
-                    <a class="dropdown-item" href="#">Mi cuenta</a></li>
-                    <a class="dropdown-item" href="cerrar_sesion.php">Cerrar sesión</a></li>
+                        <a class="dropdown-item" href="#">Mi cuenta</a></li>
+                        <a class="dropdown-item" href="cerrar_sesion.php">Cerrar sesión</a></li>
                     <?php } else { ?>
-                    <form class="px-4 py-3" id="form_user_login" novalidate method="post">
-                        <div class="form-group">
-                            <label for="exampleDropdownFormEmail1">User: </label>
-                            <input type="text" class="form-control" id="exampleDropdownFormEmail1"
-                                placeholder="nombre usuario" required name="username">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleDropdownFormPassword1">Contraseña: </label>
-                            <input type="password" class="form-control" id="exampleDropdownFormPassword1"
-                                placeholder="Password" required name="password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-                    </form>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" data-toggle="modal" data-target="#registerModal ">¿Nuevo? ¡Registrate!</a>
+                        <form class="px-4 py-3" id="form_user_login" novalidate method="post">
+                            <div class="form-group">
+                                <label for="exampleDropdownFormEmail1">User: </label>
+                                <input type="text" class="form-control" id="exampleDropdownFormEmail1"
+                                    placeholder="nombre usuario" required name="username">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleDropdownFormPassword1">Contraseña: </label>
+                                <input type="password" class="form-control" id="exampleDropdownFormPassword1"
+                                    placeholder="Password" required name="password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                        </form>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" data-toggle="modal" data-target="#registerModal ">¿Nuevo? ¡Registrate!</a>
 
-                    <div id="respuesta">
+                        <div id="respuesta">
 
-                    </div>
+                        </div>
 
                     <?php } ?>
 

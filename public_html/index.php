@@ -74,7 +74,7 @@ ob_start();
             <a href="galeria.php" class="btn">Galeria</a>
             <a href="servicios.php" class="btn">Servicios</a>
             <a href="index.php#contacto" class="btn">Contacto</a>
-            <?php if (isset($_COOKIE['token'])) { ?>
+            <?php if (isset($_SESSION['useremail'])) { ?>
                 <a href="vacanteForm.php" class="btn">Trabaja con nosotros</a>
             <?php } ?>
             <div class="dropdown">
@@ -83,7 +83,7 @@ ob_start();
                     <i class='bx bxs-user-circle'></i>
                 </button>
                 <div class="dropdown-menu">
-                    <?php if (isset($_COOKIE['token'])) { ?>
+                    <?php if (isset($_SESSION['useremail'])) { ?>
                         <a class="dropdown-item" href="#">Mi cuenta</a></li>
                         <a class="dropdown-item" href="cerrar_sesion.php">Cerrar sesión</a></li>
                     <?php } else { ?>
