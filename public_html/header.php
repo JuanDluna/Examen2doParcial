@@ -18,21 +18,42 @@
     <header class="header">
         <a href="index.php" class="logo">SOFTIX</a>
         <?php
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
 
-            $horaActual = date("H:i");
-            $horaActual = intval(substr( $horaActual,0,-1));
+        $horaActual = date("H:i");
+        $horaActual = intval(substr($horaActual, 0, -1));
 
-            if ($horaActual <= 12) { ?>
-                <p>Buenos dias</p>
-                
-            <?php } elseif ($horaActual <= 19) { ?>
-                <p>Buenas tardes</p>
+        if (isset($_SESSION['useremail'])) {
+            $correo = $_SESSION['useremail'];
+            $file = fopen("accounts.txt", "r");
+            while (!feof($file)) {
+                $linea = fgets($file);
+                $linea = explode(" ", $linea);
+                $linea[2] = trim($linea[2]);
+                if ($linea[2] == $correo) {
+                    $usuario = $linea[0];
+                    break;
+                }
+            }
+            fclose($file);
+            if ($horaActual <= 12)
+                echo "<p class='saludo'>Buenos dias $usuario</p>";
+            elseif ($horaActual <= 19)
+                echo "<p class='saludo'>Buenas tardes $usuario</p>";
+            else
+                echo "<p class='saludo'>Buenas noches $usuario</p>";
 
-            <?php }else { ?>
-                <p>Buenas noches</p>
-                
-            <?php } 
-        ?>    
+        } else {
+            if ($horaActual <= 12)
+                echo "<p class='saludo'>Buenos dias</p>";
+            elseif ($horaActual <= 19)
+                echo "<p class='saludo'>Buenas tardes</p>";
+            else
+                echo "<p class='saludo'>Buenas noches</p>";
+        }
+        ?>
         <nav class="navbar">
             <a href="index.php" class="btn">Inicio</a>
             <a href="servicios.php" class="btn">Servicios</a>

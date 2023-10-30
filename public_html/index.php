@@ -31,20 +31,41 @@
         <a href="index.php" class="logo">SOFTIX</a>
         <?php
 
-            $horaActual = date("H:i");
-            $horaActual = intval(substr( $horaActual,0,-1));
-            
-            if ($horaActual <= 12) { ?>
-                <p>Buenos dias</p>
-                
-            <?php } elseif ($horaActual <= 19) { ?>
-                <p>Buenas tardes</p>
+        session_start();
 
-            <?php }else { ?>
-                <p>Buenas noches</p>
-                
-            <?php } 
-        ?>        
+
+        $horaActual = date("H:i");
+        $horaActual = intval(substr($horaActual, 0, -1));
+
+        if (isset($_SESSION['useremail'])) {
+            $correo = $_SESSION['useremail'];
+            $file = fopen("accounts.txt", "r");
+            while (!feof($file)) {
+                $linea = fgets($file);
+                $linea = explode(" ", $linea);
+                $linea[2] = trim($linea[2]);
+                if ($linea[2] == $correo) {
+                    $usuario = $linea[0];
+                    break;
+                }
+            }
+            fclose($file);
+            if ($horaActual <= 12)
+                echo "<p class='saludo'>Buenos dias $usuario</p>";
+            elseif ($horaActual <= 19)
+                echo "<p class='saludo'>Buenas tardes $usuario</p>";
+            else
+                echo "<p class='saludo'>Buenas noches $usuario</p>";
+
+        } else {
+            if ($horaActual <= 12)
+                echo "<p class='saludo'>Buenos dias</p>";
+            elseif ($horaActual <= 19)
+                echo "<p class='saludo'>Buenas tardes</p>";
+            else
+                echo "<p class='saludo'>Buenas noches</p>";
+        }
+        ?>
         <nav class="navbar">
             <a href="index.php" class="btn">Inicio</a>
             <a href="servicios.php" class="btn">Servicios</a>
@@ -104,10 +125,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action= "procesar_registro.php" novalidate method="post">
+                    <form action="procesar_registro.php" novalidate method="post">
                         <div class="form-group">
                             <label for="registerName">Nombre</label>
-                            <input type="text" class="form-control" id="registerName" placeholder="Ingrese su nombre" required name="username">
+                            <input type="text" class="form-control" id="registerName" placeholder="Ingrese su nombre"
+                                required name="username">
                         </div>
                         <div class="form-group">
                             <label for="registerEmail">Correo electrónico</label>

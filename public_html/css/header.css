@@ -22,7 +22,13 @@
     font-size: 0.8em;
 }
 
-
+.saludo{
+    font-size: 2.5rem;
+    color: var(--white-color);
+    font-weight: 600;
+    margin-left: 0;
+    margin-right: auto;
+}
 
 .header .btn{
     background-color: var(--main-color);

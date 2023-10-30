@@ -29,6 +29,7 @@
                 $linea = explode(" ", $linea);
                 if($linea[1] == $correo){
                     header("Location: verificadorExamen.php");
+                    break;
                 }
             }
 
@@ -38,7 +39,7 @@
             die("No se ha iniciado sesión");
         }
 
-        include_once "header.php";
+        // include_once "header.php";
         ?>
     </div>
 

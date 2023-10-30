@@ -1,59 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Softix: Examen de conocimientos</title>
+    <link rel="shortcut icon" href="img\Logo.png" type="image/x-icon">
     <link rel="stylesheet" href="css/Quiz.css">
 </head>
+
 <body>
-    <div class="container">
-        <section class="quiz-section">
-            <div class="quiz-box">
-                <h1>prueba</h1>
-                <div class="quiz-header">
-                    <span>quiz wbesite tutorital</span>
-                    <span class="header-score">score: 0 / 5</span>
-                </div>
-                <h2 class="question-text">que significa html</h2>
-                <div class="option-list">
-                    <div class="option">
-                        <span>a. fjkdsbfvhsdbvhdu</span>
-                    </div>
-                    <div class="option">
-                        <span>b. hyper type multi language</span>
-                    </div>
-                    <div class="option">
-                        <span>c. hyper text multiple language</span>
-                    </div>
-                    <div class="option">
-                        <span>d. sdhjkbfjhgdkj</span>
-                    </div>
-                </div>
-                <div class="quiz-footer">
-                    <span class="question-total">1 de 5 preguntas</span>
-                    <button class="next-btn">siguiente</button>
-                </div>
-            </div>
-        </section>
-        <button class="btn-Iniciar">Iniciar Quiz</button>
-    </div>
-    <div class="pop-info">
-        <h2>Guia del Quiz</h2>
-        <span class="info">1.- akjsdbihsdbfuwid</span>
-        <span class="info">2.- akjsdbihsdbfuwid</span>
-        <span class="info">3.- akjsdbihsdbfuwid</span>
-        <span class="info">4.- akjsdbihsdbfuwid</span>
-        <span class="info">5.- akjsdbihsdbfuwid</span>
+    <?php
+    session_start();
+    include_once "header.php";
+    require_once "respuestas.php";
+
+    
 
 
-        <div class="info-btn btn-group">
-            <button class="info-btn btn-atras">Atras</button>
-            <a href="#" class="info-btn continuar-btn">continuar</a>
-        </div>
-    </div>
+    if (isset($_SESSION['useremail'])) {
+        
+        $correo = $_SESSION['useremail'];
+        // Abrir el archivo en modo lectura y escritura
+        $file = fopen("CodigoExamen.txt", "r+");
+        // Leer el contenido del archivo y almacenarlo en un array
+        $fileContent = file("CodigoExamen.txt");
+        // Buscar la línea que contiene el correo de la variable $correo
+        foreach ($fileContent as &$line) {
+            if (strpos($line, $correo) !== false) {
+                $codigo = explode(" ", $line);
+                if($codigo[0] == "HECHO"){
+                    echo "Esta validacion sigue funcionando, tranquilo";
+                    // header("Location: index.php");
+                }else{
+                    // Si se encuentra el correo, modificar el código de acceso
+                    $line = str_replace($codigo[0],"HECHO", $line);
+                }
+                break;
+            }
+        }
+        unset($line);
+        // Escribir el contenido actualizado en el archivo
+        file_put_contents("CodigoExamen.txt", implode("", $fileContent));
+    }else{
+        die("No se accedió correctamente al examen.");
+    }
+    // Shuffle the questions and answers
+    foreach ($quiz as &$question) {
+        shuffle($question['answers']);
+    }
+    unset($question);
+    shuffle($quiz);
 
-    <script src="js/preguntas.js"></script>
-    <script src="js/script2.js"></script>
+    echo "<form action='' method='post' class='needs-validation' novalidate>";
+    // Display the questions
+    foreach ($quiz as $key => $value) {
+        echo "<div class='card mb-3'>";
+        echo "<div class='card-body'>";
+        echo "<h3 class='card-title'>" . ($key + 1) . ". " . $value['question'] . "</h3>";
+        echo "<ul class='list-group list-group-flush'>";
+        foreach ($value['answers'] as $option => $answer) {
+            echo "<li class='list-group-item'>";
+            echo "<div class='form-check'>";
+            echo "<input class='form-check-input' type='radio' name='pregunta" . ($key + 1) . "' value='" . $option . "'>";
+            echo "<label class='form-check-label'>" . $answer . "</label>";
+            echo "</div>";
+            echo "</li>";
+        }
+        echo "</ul>";
+        echo "</div>";
+        echo "</div>";
+    }
+    echo "<button type='submit' class='btn btn-primary'>Submit</button>";
+    echo "</form>";
+
+
+
+
+    include "footer.html";
+    ?>
+
+
+
+    <script>
+        window.addEventListener("beforeunload", function (event) {
+            event.preventDefault();
+            
+            event.returnValue = "";
+            if(window.confirm("¿De verdad quieres salir? No podrás volver a hacer el examen o seguir con el intento.")){
+                window.location.href = "index.php";
+            }	
+            (event || window.event).returnValue = confirmationMessage;
+            return confirmationMessage;
+        });
+    </script>
+
+
 </body>
+
 </html>

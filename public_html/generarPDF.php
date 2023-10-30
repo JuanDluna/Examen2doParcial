@@ -29,7 +29,6 @@ $nombre = $_POST['nombre'];
 $apellido_paterno = $_POST['apellido_paterno'];
 $apellido_materno = $_POST['apellido_materno'];
 $telefono = $_POST['telefono'];
-// $foto = "data:image/png;base64," . base64_encode(file_get_contents($_POST['foto']));
 $dia = $_POST['dia'];
 $mes = $_POST['mes'];
 $anio = $_POST['anio'];

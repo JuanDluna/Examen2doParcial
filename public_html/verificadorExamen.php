@@ -18,10 +18,11 @@
 <body>
 
     <?php
-
+    ob_start();
     session_start();
 
     if (isset($_SESSION['useremail'])) {
+        $hecho = true;
         $correo = $_SESSION['useremail'];
         $file = fopen("CodigoExamen.txt", "r");
         while (!feof($file)) {
@@ -29,30 +30,39 @@
             $linea = explode(" ", $linea);
             if ($linea[0] == "HECHO" && $linea[1] == $correo) {
                 header("Location: index.php");
-            } else if ($linea[0] != "HECHO" && $linea[1] == $correo) {
+            }else if ($linea[0] != "HECHO" && $linea[1] == $correo) {
                 $codigoUNIQ = $linea[0];
-                $nohecho = true;
+                $hecho = false;
                 break;
             }
         }
         fclose($file);
-        if ($nohecho != true)
-            header("Location: vacanteForm.php");
+        // if ($hecho == true)
+        header(" index.php");
     }
 
     include_once "header.php";
     ?>
 
     <div class="container">
-        <form action="examen.php" method="post">
+        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
             <div class="form-group">
                 <label for="codigo">Ingresa tu código de acceso:</label>
                 <input type="text" class="form-control" id="codigo" name="codigo" required>
-                <?php if (isset($codigoUNIQ)) { ?>
-                    <input type="hidden" name="codigoUNIQ" value="<?php echo $codigoUNIQ; ?>">
-                <?php } ?>
-            <button type="submit" class="btn btn-primary">Ingresar</button>
+                <button type="submit" class="btn btn-primary">Ingresar</button>
         </form>
+        <?php
+        if (isset($_POST['codigo']) && isset($codigoUNIQ)) {
+            $codigo = $_POST['codigo'];
+            if ($codigo == $codigoUNIQ) {
+                header("Location: examen.php");
+                ob_end_flush();
+            } else {
+                echo "<div class='alert alert-danger' role='alert'>
+                        Código incorrecto.
+                    </div>";
+            }
+        } ?>
     </div>
 
 
