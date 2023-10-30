@@ -30,47 +30,51 @@
             $linea = explode(" ", $linea);
             if (trim($linea[0]) == "HECHO" && trim($linea[1]) == $correo) {
                 header("Location: index.php");
-            }else if ($linea[0] != "HECHO" && trim($linea[1]) == $correo) {
+            } else if ($linea[0] != "HECHO" && trim($linea[1]) == $correo) {
                 $codigoUNIQ = $linea[0];
                 $hecho = false;
                 break;
             }
         }
         fclose($file);
-        // if ($hecho == true)
-        header(" index.php");
+        if ($hecho == true)
+            header(" index.php");
     }
 
     include_once "header.php";
     ?>
-
-    <div class="container">
-        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-            <div class="form-group">
-                <label for="codigo">Ingresa tu código de acceso:</label>
-                <input type="text" class="form-control" id="codigo" name="codigo" required>
-                <button type="submit" class="btn btn-primary">Ingresar</button>
-        </form>
-        <?php
-        if (isset($_POST['codigo']) && isset($codigoUNIQ)) {
-            $codigo = $_POST['codigo'];
-            if ($codigo == $codigoUNIQ) {
-                header("Location: examen.php");
-                ob_end_flush();
-            } else {
-                echo "<div class='alert alert-danger' role='alert'>
-                        Código incorrecto.
-                    </div>";
+    <div class="container2">
+        <div class="container">
+            <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+                <div class="form-group">
+                    <label for="codigo">Ingresa tu código de acceso:</label>
+                    <input type="text" class="form-control" id="codigo" name="codigo" required>
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                </div>
+            </form>
+            <?php
+            if (isset($_POST['codigo']) && isset($codigoUNIQ)) {
+                $codigo = $_POST['codigo'];
+                if ($codigo == $codigoUNIQ) {
+                    header("Location: examen.php");
+                    ob_end_flush();
+                } else {
+                    echo "<div class='alert alert-danger' role='alert'>";
+                    echo "Código incorrecto.";
+                    echo "</div>";
+                }
             }
-        } ?>
+            ?>
+        </div>
     </div>
 
-    
-    <?php include_once "footer.html"; ?>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
+    <?php include_once "footer.html"; ?>
 </body>
 
 </html>
