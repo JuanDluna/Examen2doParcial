@@ -30,8 +30,10 @@ function user_authetication($username, $password, $email) {
     $token = JWT::encode($payload, $secret_key[0], 'HS256');
 
     setcookie("token", $token, time() + 3600,"/");
+
     session_start();
     $_SESSION['useremail'] = $email;
+    $_SESSION['username'] = $username;
 }
 function request_login($login_data, $login_emails){
     
