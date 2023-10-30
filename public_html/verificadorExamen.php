@@ -30,7 +30,7 @@
             $linea = explode(" ", $linea);
             if ($linea[0] == "HECHO" && $linea[1] == $correo) {
                 header("Location: index.php");
-            }else if ($linea[0] != "HECHO" && $linea[1] == $correo) {
+            }else if ($linea[0] != "HECHO" && trim($linea[1]) == $correo) {
                 $codigoUNIQ = $linea[0];
                 $hecho = false;
                 break;

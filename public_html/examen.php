@@ -52,26 +52,24 @@
     unset($question);
     shuffle($quiz);
 
-    echo "<form action='' method='post' class='needs-validation' novalidate>";
+    echo "<form action='' method='post'>";
     // Display the questions
     foreach ($quiz as $key => $value) {
-        echo "<div class='card mb-3'>";
-        echo "<div class='card-body'>";
-        echo "<h3 class='card-title'>" . ($key + 1) . ". " . $value['question'] . "</h3>";
-        echo "<ul class='list-group list-group-flush'>";
+        echo "<div>";
+        echo "<h3>" . ($key + 1) . ". " . $value['question'] . "</h3>";
+        echo "<ul>";
         foreach ($value['answers'] as $option => $answer) {
-            echo "<li class='list-group-item'>";
-            echo "<div class='form-check'>";
-            echo "<input class='form-check-input' type='radio' name='pregunta" . ($key + 1) . "' value='" . $option . "'>";
-            echo "<label class='form-check-label'>" . $answer . "</label>";
+            echo "<li>";
+            echo "<div>";
+            echo "<input type='radio' name='pregunta" . ($key + 1) . "' id='pregunta" . ($key + 1) . "-" . $option . "' value='" . $option . "'>";
+            echo "<label for='pregunta" . ($key + 1) . "-" . $option . "' id='pregunta" . ($key + 1) . "-" . $option . "-label'>" . $answer . "</label>";
             echo "</div>";
             echo "</li>";
         }
         echo "</ul>";
         echo "</div>";
-        echo "</div>";
     }
-    echo "<button type='submit' class='btn btn-primary'>Submit</button>";
+    echo "<button type='submit'>Submit</button>";
     echo "</form>";
 
 
@@ -79,21 +77,6 @@
 
     include "footer.html";
     ?>
-
-
-
-    <script>
-        window.addEventListener("beforeunload", function (event) {
-            event.preventDefault();
-            
-            event.returnValue = "";
-            if(window.confirm("¿De verdad quieres salir? No podrás volver a hacer el examen o seguir con el intento.")){
-                window.location.href = "index.php";
-            }	
-            (event || window.event).returnValue = confirmationMessage;
-            return confirmationMessage;
-        });
-    </script>
 
 
 </body>

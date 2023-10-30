@@ -27,7 +27,8 @@
             while (!feof($file)) {
                 $linea = fgets($file);
                 $linea = explode(" ", $linea);
-                if($linea[1] == $correo){
+                echo $linea[1] . " " . $correo . "<br>";
+                if(trim($linea[1]) == $correo){
                     header("Location: verificadorExamen.php");
                     break;
                 }
@@ -39,7 +40,7 @@
             die("No se ha iniciado sesión");
         }
 
-        // include_once "header.php";
+        include_once "header.php";
         ?>
     </div>
 
