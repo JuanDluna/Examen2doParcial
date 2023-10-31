@@ -130,11 +130,11 @@
         </div>
     </div>
 
+    <?php
     $_SESSION['puntaje'] = $puntaje;
 
     include "email.php";
 
-    <?php
     include "footer.html";
     ?>
 

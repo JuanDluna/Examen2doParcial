@@ -126,7 +126,6 @@ if(isset($_SESSION['puntaje'])) {
 
 try {
 
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
@@ -141,23 +140,20 @@ try {
     $mail->isHTML(true);
     $mail->Subject = 'Aplicacion a SOFTIX';
 
-    if($puntaje >= 6){
+    if($puntaje >= 60){
 
         $mail->Body = $message_aceptado; //if si aceptado o rechazado
     }
     else{
         $mail->Body = $message_rechazado;
     }
-    $mail->addAttachment('Firma.png');
+    $mail->addAttachment('img/Firma.png');
 
     $mail->send();
     echo 'Mensaje enviado';
-
-    header("Location: index.php");
 
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 
-    header("Location: examen.php");
 ?>
