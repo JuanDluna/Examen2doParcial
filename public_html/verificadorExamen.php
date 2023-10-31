@@ -34,11 +34,13 @@
                 $codigoUNIQ = $linea[0];
                 $hecho = false;
                 break;
+            }else{
+                $hecho = false;
             }
         }
         fclose($file);
-        if ($hecho == true)
-            header("Location: resultados.php");
+        // if ($hecho == true)
+            // header("Location: resultados.php");
     }
 
     include_once "header.php";
