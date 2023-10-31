@@ -151,7 +151,7 @@ try {
     $mail->addAttachment('Firma.png');
 
     $mail->send();
-    echo 'Mensaje enviado';
+    echo 'Mensaje enviado'; 
 
     header("Location: index.php");
 
@@ -159,5 +159,5 @@ try {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 
-    header("Location: examen.php");
+    header("Location: resultados.php");
 ?>
