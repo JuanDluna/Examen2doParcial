@@ -150,7 +150,7 @@ try {
     $mail->addAttachment('img/Firma.png');
 
     $mail->send();
-    echo 'Mensaje enviado';
+    echo 'Mensaje enviado'; 
 
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
