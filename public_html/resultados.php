@@ -12,7 +12,7 @@
 <body>
 
     <?php
-
+    session_start();
     require "respuestas.php";
     // include "header.php";
 
@@ -69,7 +69,9 @@
         </div>
     </div>
 
+    $_SESSION['puntaje'] = $puntaje;
 
+    include "email.php";
 
 
     <?php

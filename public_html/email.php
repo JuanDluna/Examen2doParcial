@@ -119,7 +119,13 @@ $message_rechazado =
     </html>
 ";
 
+if(isset($_SESSION['puntaje'])) {
+
+    $puntaje = $_SESSION['puntaje'];
+}
+
 try {
+
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
@@ -128,19 +134,30 @@ try {
     $mail->Password = 'xmaqsmnfktniwlbg';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port = 465;
-
+    
     $mail->setFrom('urielaoac@gmail.com', 'Equipo de SOFTIX');
     $mail->addAddress($email, $username);
-
+    
     $mail->isHTML(true);
     $mail->Subject = 'Aplicacion a SOFTIX';
-    $mail->Body = $message_rechazado; //if si aceptado o rechazado
+
+    if($puntaje >= 6){
+
+        $mail->Body = $message_aceptado; //if si aceptado o rechazado
+    }
+    else{
+        $mail->Body = $message_rechazado;
+    }
     $mail->addAttachment('Firma.png');
 
     $mail->send();
     echo 'Mensaje enviado';
+
+    header("Location: index.php");
+
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 
+    header("Location: examen.php");
 ?>
