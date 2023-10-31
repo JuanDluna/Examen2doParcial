@@ -69,7 +69,7 @@
                 </button>
                 <div class="dropdown-menu">
                     <?php if (isset($_COOKIE['token'])) { ?>
-                        <a class="dropdown-item" href="#">Mi cuenta</a></li>
+                        <a class="dropdown-item" href="cuenta.php">Mi cuenta</a></li>
                         <a class="dropdown-item" href="cerrar_sesion.php">Cerrar sesión</a></li>
                     <?php } else { ?>
                         <form class="px-4 py-3" id="form_user_login" novalidate method="post">

@@ -36,9 +36,11 @@ ob_start();
     <header class="header">
         <a href="index.php" class="logo">SOFTIX</a>
         <?php
-
-        $horaActual = date("H:i");
-        $horaActual = intval(substr($horaActual, 0, -1));
+        
+        // set the default timezone to use.
+        date_default_timezone_set('America/Mexico_City');
+        $horaActual = date("H:i:s");
+        $hora = substr($horaActual, 0, 2);
 
         if (isset($_SESSION['useremail'])) {
             $correo = $_SESSION['useremail'];
@@ -84,7 +86,7 @@ ob_start();
                 </button>
                 <div class="dropdown-menu">
                     <?php if (isset($_SESSION['useremail'])) { ?>
-                        <a class="dropdown-item" href="#">Mi cuenta</a></li>
+                        <a class="dropdown-item" href="cuenta.php">Mi cuenta</a></li>
                         <a class="dropdown-item" href="cerrar_sesion.php">Cerrar sesión</a></li>
                     <?php } else { ?>
                         <form class="px-4 py-3" id="form_user_login" novalidate method="post">

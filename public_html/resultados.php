@@ -36,6 +36,53 @@
     // Calcular el puntaje final
     $puntaje = $correctas * 10;
     $_SESSION['puntaje'] = $puntaje;
+
+    if(isset($_SESSION['useremail'])){
+        // Open the file in read mode
+        $file = fopen("registro_examen.txt", "r");
+
+        // Check if the user's email is already in the file
+        $email_exists = false;
+        while (!feof($file)) {
+            $line = fgets($file);
+            if (strpos($line, $_SESSION['useremail']) !== false) {
+                $email_exists = true;
+                break;
+            }
+        }
+
+        // Close the file
+        fclose($file);
+
+        if ($email_exists) {
+            // Open the file in read mode
+            $file = fopen("registro_examen.txt", "r");
+
+            // Read the value of $puntaje from the file
+            while (!feof($file)) {
+                $line = fgets($file);
+                if (strpos($line, $_SESSION['useremail']) !== false) {
+                    $puntaje = (int) trim(str_replace($_SESSION['useremail'], '', $line));
+                    break;
+                }
+            }
+
+            // Close the file
+            fclose($file);
+        } else {
+            // Open the file in append mode
+            $file = fopen("registro_examen.txt", "a");
+
+            // Write the user's email and the value of $puntaje to the file
+            fwrite($file, $_SESSION['useremail'] . " " . $puntaje . "\n");
+
+            // Close the file
+            fclose($file);
+        }
+
+        $_SESSION['puntaje'] = $puntaje;
+    }
+
     ?>
 
     <div class="container">
@@ -68,11 +115,11 @@
         <?php
         if ($puntaje >= 60) {
             echo "<div class='alert alert-success' role='alert'>";
-            echo "Felicidades, has aprobado el examen.";
+            echo "¡Felicidades, has aprobado el examen!<br> Se te ha mandado un correo electronico a <strong>" .  $_SESSION['useremail'] . " </strong> con más información para tu proceso de unión a Softix. ";
             echo "</div>";
         } else {
             echo "<div class='alert alert-danger' role='alert'>";
-            echo "Lo sentimos, no has aprobado el examen.";
+            echo "Lo sentimos, no has aprobado el examen.<br> Se te ha mandado un correo electronico a <strong>" .  $_SESSION['useremail'] . " </strong> con los resultados.";
             echo "</div>";
         } 
         ?>

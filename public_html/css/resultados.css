@@ -13,6 +13,7 @@ body {
 
 h1.titulo {
     color: var(--main-color);
+    font-size: 5em;
 }
 
 p.puntaje, p.correctas, p.incorrectas {
@@ -21,6 +22,7 @@ p.puntaje, p.correctas, p.incorrectas {
     border: 1px solid var(--shadow-color);
     border-radius: 5px;
     margin-bottom: 10px;
+    font-size: 2.3em;
 }
 
 a.btn {
@@ -32,9 +34,12 @@ a.btn {
     box-shadow: 0 0 10px var(--shadow-color);
 }
 
+.alert{
+    font-size: 2.3em;
+}
 .container {
     max-width: 960px;
-    margin: 5em auto;
+    margin: 15em auto;
 }
 
 .row {
